@@ -1,0 +1,26 @@
+package com.opennuri.study.springboot.egov.sample.config;
+
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+import javax.sql.DataSource;
+import java.io.IOException;
+
+@Configuration
+@MapperScan(basePackages = "com.opennuri.study.springboot.egov.sample.service.impl")
+public class EgovConfigMapper {
+
+    @Bean
+    public SqlSessionFactoryBean sqlSessionFactory(@Qualifier("dataSource")DataSource dataSource) throws IOException {
+        PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setConfigLocation(patternResolver.getResource("classpath:/egovframework/sqlmap/example/sql-mapper-config.xml"));
+        sqlSessionFactoryBean.setMapperLocations(patternResolver.getResources("classpath:/egovframework/sqlmap/example/mappers/*.xml"));
+        return sqlSessionFactoryBean;
+    }
+}
