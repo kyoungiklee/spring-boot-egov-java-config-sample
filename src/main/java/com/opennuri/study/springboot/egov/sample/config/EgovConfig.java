@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Import;
         EgovConfigDataSource.class,
         EgovConfigProperties.class,
         EgovConfigTransaction.class,
-        EgovConfigAspect.class
+        EgovConfigAspect.class,
+        EgovConfigMapper.class,
+        EgovConfigValidator.class
 })
 public class EgovConfig {
 }

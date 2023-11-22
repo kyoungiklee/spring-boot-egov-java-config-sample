@@ -1,6 +1,8 @@
 package com.opennuri.study.springboot.egov.sample.config;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -22,5 +24,10 @@ public class EgovConfigMapper {
         sqlSessionFactoryBean.setConfigLocation(patternResolver.getResource("classpath:/egovframework/sqlmap/example/sql-mapper-config.xml"));
         sqlSessionFactoryBean.setMapperLocations(patternResolver.getResources("classpath:/egovframework/sqlmap/example/mappers/*.xml"));
         return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
