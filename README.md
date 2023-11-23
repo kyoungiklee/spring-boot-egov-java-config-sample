@@ -20,7 +20,7 @@ $ git branch
 ```
 
 
-$ git push -u origin main
+$ git push -u origin main:ㅂ!
 
   remote: Permission to kyoungiklee/spring-boot-egov-java-config-sample.git denied to roadseeker.
   fatal: unable to access 'https://github.com/kyoungiklee/spring-boot-egov-java-config-sample.git/': The requested URL returned error: 403
@@ -98,5 +98,14 @@ d19022d..9897b6b  main -> main
 branch 'main' set up to track 'origin/main'.
 ```
 
-
+### .git > config 정보 변경 (github push 시 인증 실패시 처리)
+```
+remote "origin"]
+url = https://github.com/kyoungiklee/spring-boot-egov-java-config-sample.git
+fetch = +refs/heads/*:refs/remotes/origin/*
+-->
+remote "origin"]
+url = https://kyoungiklee:ghp_7f0ybqBY7G5o***************@github.com/kyoungiklee/spring-boot-egov-java-config-sample.git
+fetch = +refs/heads/*:refs/remotes/origin/*
+```
 
