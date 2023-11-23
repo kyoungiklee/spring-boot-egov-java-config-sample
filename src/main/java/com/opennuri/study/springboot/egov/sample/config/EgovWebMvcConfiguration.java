@@ -125,6 +125,4 @@ public class EgovWebMvcConfiguration extends WebMvcConfigurationSupport {
         registrationBean.addUrlPatterns("*.do");
         return registrationBean;
     }
-
-
 }
